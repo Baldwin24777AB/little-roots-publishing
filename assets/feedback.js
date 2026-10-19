@@ -29,7 +29,7 @@
     '<div class="lr-panel" id="lr-panel" role="dialog" aria-labelledby="lr-title" hidden>' +
       '<button class="lr-close" type="button" aria-label="Close">×</button>' +
       '<h2 id="lr-title">Say hello</h2>' +
-      '<p>Share a review, feedback, a suggestion, or anything else. Anthony reads every message.</p>' +
+      '<p>Share a review, feedback, a suggestion, or anything else. Little Roots Publishing reads every message.</p>' +
       '<form class="lr-form" novalidate>' +
         '<label for="lr-type">What kind of message?</label>' +
         '<select id="lr-type" name="type"><option>Review</option><option>Feedback</option><option>Suggestion</option><option>Other</option></select>' +
