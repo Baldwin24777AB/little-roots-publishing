@@ -7,9 +7,10 @@
   style.textContent = '.like-btn{display:inline-flex;align-items:center;gap:8px;vertical-align:middle;margin-left:12px;border:1px solid #31583e;border-radius:28px;background:transparent;color:#31583e;font:inherit;font-size:13px;padding:12px 18px;cursor:pointer}' +
     '.like-btn:hover{background:#31583e14}.like-btn:focus-visible{outline:3px solid #bd6439;outline-offset:3px}' +
     '.like-btn.liked{background:#31583e;color:#fbf8ed;cursor:default}.buttons .like-btn{margin-left:0}' +
-    'a.book-tip{transform:none!important;top:auto!important;left:auto!important}.book-tip{display:inline-block;vertical-align:middle;margin-left:14px;line-height:0;filter:drop-shadow(0 3px 6px #253f3233)}.buttons .book-tip{margin-left:0}.buttons:has(.book-tip){align-items:center}' +
+    'a.book-tip{transform:none!important;top:auto!important;left:auto!important}.book-tip{display:inline-block;margin-left:auto;line-height:0;filter:drop-shadow(0 3px 6px #253f3233)}' +
+    '.tip-row{display:flex;align-items:center;justify-content:flex-start;flex-wrap:nowrap;gap:12px}.tip-row .like-btn{margin-left:0}' +
     '.book-tip svg{transform-origin:50% 100%}.book-tip:hover svg,.book-tip:active svg{animation:jar-sway .7s ease-in-out}@media(prefers-reduced-motion:reduce){.book-tip:hover svg,.book-tip:active svg{animation:none}}' +
-    '@media(max-width:700px){.like-btn{padding:12px 14px;gap:6px;margin-left:8px}.book-tip{margin-left:8px}.buttons:has(.book-tip){gap:8px;flex-wrap:nowrap}}';
+    '@media(max-width:700px){.like-btn{padding:12px 14px;gap:6px}.tip-row{gap:8px}}';
   document.head.appendChild(style);
 
   function stored(key) { try { return localStorage.getItem(key); } catch (e) { return null; } }
@@ -41,6 +42,14 @@
       var jar = topJar.cloneNode(true);
       jar.className = 'book-tip';
       btn.insertAdjacentElement('afterend', jar);
+      // Put Read Free, Like and the jar on one row with the jar at the far right.
+      var row = read.parentNode;
+      if (!row.classList.contains('buttons')) {
+        row = document.createElement('div');
+        read.insertAdjacentElement('beforebegin', row);
+        row.append(read, btn, jar);
+      }
+      row.classList.add('tip-row');
     }
     if (stored(key)) { markLiked(btn); return; }
 
