@@ -41,6 +41,7 @@
     if (topJar) {
       var jar = topJar.cloneNode(true);
       jar.className = 'book-tip';
+      var lbl = jar.querySelector('.tip-label'); if (lbl) lbl.remove();
       btn.insertAdjacentElement('afterend', jar);
       // Put Read Free, Like and the jar on one row with the jar at the far right.
       var row = read.parentNode;
